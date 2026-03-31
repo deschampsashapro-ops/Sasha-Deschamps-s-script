@@ -1,15 +1,21 @@
-import math
+import math  # On importe les maths pour utiliser exp (e^x)
 
-a = 0
-b = 1
-precision = 0.001
+a = 0  # Début de l'intervalle (genre on commence à chercher ici)
+b = 1  # Fin de l'intervalle (et on cherche entre 0 et 1)
+precision = 0.001  # À quel point on veut être précis (plus c'est petit, mieux c'est)
 
+# Tant que l'intervalle est trop grand, on continue de chercher
 while b - a > precision:
-    m = (a + b) / 2
+    m = (a + b) / 2  # On prend le milieu
+    
+    # Si e^m est plus petit que 2, la solution est à droite
     if math.exp(m) < 2:
-        a = m
+        a = m  # On déplace le début vers le milieu
     else:
-        b = m
+        b = m  # Sinon la solution est à gauche, donc on bouge la fin
 
+# Une fois qu'on est assez précis, on prend le milieu final
 solution = (a + b) / 2
+
+# On affiche le résultat (la valeur de x pour laquelle e^x ≈ 2)
 print("Solution approchée :", solution)
